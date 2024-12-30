@@ -58,6 +58,7 @@ function App() {
         onClearPosts: handleClearPosts,
         searchQuery,
         setSearchQuery,
+        createRandomPost,
       }}
     >
       <section>
@@ -70,10 +71,7 @@ function App() {
 
         <Header />
         <Main />
-        <Archive
-          onAddPost={handleAddPost}
-          createRandomPost={createRandomPost}
-        />
+        <Archive />
         <Footer />
       </section>
     </PostContext.Provider>
