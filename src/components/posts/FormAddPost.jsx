@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
+import { PostContext } from "../../App";
 
-import { useState } from "react";
-
-function FormAddPost({ onAddPost }) {
+function FormAddPost() {
+  const { onAddPost } = useContext(PostContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 

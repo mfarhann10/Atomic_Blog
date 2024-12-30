@@ -1,5 +1,8 @@
-/* eslint-disable react/prop-types */
-function Results({ posts }) {
+import { useContext } from "react";
+import { PostContext } from "../../App";
+
+function Results() {
+  const { posts } = useContext(PostContext);
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 

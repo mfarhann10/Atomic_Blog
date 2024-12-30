@@ -1,19 +1,20 @@
-/* eslint-disable react/prop-types */
+import { useContext } from "react";
 import Results from "../posts/Results";
 import SearchPosts from "../posts/SearchPosts";
+import { PostContext } from "../../App";
 
-function Header({ posts, onClearPosts, searchQuery, setSearchQuery }) {
+function Header() {
+  //3 use Consu
+  const { onClearPosts } = useContext(PostContext);
+
   return (
     <header>
       <h1>
         <span>⚛️</span>The Atomic Blog
       </h1>
       <div>
-        <Results posts={posts} />
-        <SearchPosts
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
+        <Results />
+        <SearchPosts />
         <button onClick={onClearPosts}>Clear posts</button>
       </div>
     </header>

@@ -1,10 +1,10 @@
 import List from "./List";
 
 /* eslint-disable react/prop-types */
-function Posts({ posts }) {
+function Posts() {
   return (
     <section>
-      <List posts={posts} />
+      <List />
     </section>
   );
 }

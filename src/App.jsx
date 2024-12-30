@@ -13,7 +13,8 @@ function createRandomPost() {
 }
 
 //1. Create a context
-const PostContext = createContext();
+// eslint-disable-next-line react-refresh/only-export-components
+export const PostContext = createContext();
 
 function App() {
   const [posts, setPosts] = useState(() =>
@@ -67,13 +68,8 @@ function App() {
           {isFakeDark ? "☀️" : "🌙"}
         </button>
 
-        <Header
-          posts={searchedPosts}
-          onClearPosts={handleClearPosts}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        <Main posts={searchedPosts} onAddPost={handleAddPost} />
+        <Header />
+        <Main />
         <Archive
           onAddPost={handleAddPost}
           createRandomPost={createRandomPost}
