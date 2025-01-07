@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { faker } from "@faker-js/faker";
 
 function createRandomPost() {
@@ -52,4 +52,11 @@ function PostProvider({ children }) {
   );
 }
 
-export { PostProvider, PostContext };
+//4 add custome hooks to consume the provider
+function usePosts() {
+  const context = useContext(PostContext);
+  if (context === undefined) throw new Error("no");
+  return context;
+}
+
+export { PostProvider, usePosts };
