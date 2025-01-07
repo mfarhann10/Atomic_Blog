@@ -3,15 +3,15 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Main from "./components/posts/Main";
 import Archive from "./Archive/Archive";
-import { PostProvider, PostContext } from "./components/posts/PostContext";
-import { faker } from "@faker-js/faker";
+import { PostProvider } from "./components/posts/PostContext";
+//import { faker } from "@faker-js/faker";
 
-function createRandomPost() {
+/* function createRandomPost() {
   return {
     title: `${faker.hacker.adjective()} ${faker.hacker.noun()}`,
     body: faker.hacker.phrase(),
   };
-}
+} */
 
 function App() {
   const [isFakeDark, setIsFakeDark] = useState(false);
@@ -24,20 +24,21 @@ function App() {
   );
 
   return (
-    <PostProvider>
-      <section>
-        <button
-          onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-          className="btn-fake-dark-mode"
-        >
-          {isFakeDark ? "☀️" : "🌙"}
-        </button>
+    <section>
+      <button
+        onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
+        className="btn-fake-dark-mode"
+      >
+        {isFakeDark ? "☀️" : "🌙"}
+      </button>
+
+      <PostProvider>
         <Header />
         <Main />
         <Archive />
         <Footer />
-      </section>
-    </PostProvider>
+      </PostProvider>
+    </section>
   );
 }
 
