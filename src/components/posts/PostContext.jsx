@@ -55,7 +55,7 @@ function PostProvider({ children }) {
 //4 add custome hooks to consume the provider
 function usePosts() {
   const context = useContext(PostContext);
-  if (context === undefined) throw new Error("no");
+  if (context === undefined) throw new Error("Unknown Context");
   return context;
 }
 
