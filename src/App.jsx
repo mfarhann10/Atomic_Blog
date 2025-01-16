@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Main from "./components/posts/Main";
 import Archive from "./Archive/Archive";
-import { PostProvider, usePosts } from "./components/posts/PostContext";
+import { PostProvider } from "./components/posts/PostContext";
 //import { faker } from "@faker-js/faker";
 
 /* function createRandomPost() {
@@ -13,24 +13,15 @@ import { PostProvider, usePosts } from "./components/posts/PostContext";
   };
 } */
 
-function AppContent() {
-  const { posts } = usePosts();
-
+function App() {
   const [isFakeDark, setIsFakeDark] = useState(false);
-  // Toggle the `fake-dark-mode` class on the HTML element
+  // Whenever isFakeDark changes, we togngle the fake-dark-mode class on the HTML element (see in "Elements" dev tool).
   useEffect(
     function () {
-      document.documentElement.classList.toggle("fake-dark-mode", isFakeDark);
+      document.documentElement.classList.toggle("fake-dark-mode");
     },
     [isFakeDark]
   );
-
-  const archiveOptions = useMemo(() => {
-    return {
-      show: false,
-      title: `Post Archive (${posts.length})`,
-    };
-  }, [posts.length]);
 
   return (
     <section>
@@ -41,19 +32,13 @@ function AppContent() {
         {isFakeDark ? "☀️" : "🌙"}
       </button>
 
-      <Header />
-      <Main />
-      <Archive archiveOptions={archiveOptions} />
-      <Footer />
+      <PostProvider>
+        <Header />
+        <Main />
+        <Archive />
+        <Footer />
+      </PostProvider>
     </section>
-  );
-}
-
-function App() {
-  return (
-    <PostProvider>
-      <AppContent />
-    </PostProvider>
   );
 }
 
